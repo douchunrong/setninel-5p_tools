@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/demo_downloader_setninel-5p.iml" filepath="$PROJECT_DIR$/.idea/demo_downloader_setninel-5p.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/setninel-5p_downloader.iml" filepath="$PROJECT_DIR$/.idea/setninel-5p_downloader.iml" />
     </modules>
   </component>
 </project>
