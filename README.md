@@ -1,6 +1,6 @@
 # Setninel-5p_tools
 
-Python API to quarry and download Sentinel 5P data products.
+Python API to request and download Sentinel 5P data products.
 
 ### Request data products for last X days and get short response
 
