@@ -48,3 +48,16 @@ Python API to request and download Sentinel 5P data products.
 
     data = quarry = s5_quarry(days=10,full_response=True)
     # Returns json with products formated as s5phub response
+
+
+### Products types:
+
+OZONE_TOTAL = 'L2__O3____'
+OZONE_TROPOSPHIRIC = 'L2__O3_TCL'
+OZONE_PROFILE = 'L2__O3__PR'
+OZONE_TROPOSPHIRIC_PROFILE = 'L2__O3_TPR'
+NITROGEN_DIOXIDE = 'L2__NO2___'
+SULFAR_DIOXIDE = 'L2__SO2___'
+CARBON_MONOXID = 'L2__CO____'
+METHANE = 'L2__CH4___'
+FORMALDEHYDE = 'L2__HCHO__'
