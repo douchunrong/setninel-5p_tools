@@ -7,8 +7,7 @@ Python API to request and download Sentinel 5P data products.
 .. code-block:: python
 
     from download import s5_quarry
-    
-        # Returns json with products list formated as: {'identifier','uuid','date'}
+    # Returns json with products list formated as: {'identifier','uuid','date'}
     data = s5_quarry(days=10)
    
 ### Download latest product by uuid
