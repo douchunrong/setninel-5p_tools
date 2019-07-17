@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db42848e-05f7-498f-a6b9-98a2d729a99f" name="Default Changelist" comment="Adding API description to readme file">
-      <change beforePath="$PROJECT_DIR$/../setninel-5p_tools/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../setninel-5p_tools/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="db42848e-05f7-498f-a6b9-98a2d729a99f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../setninel-5p_tools/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../setninel-5p_tools/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +37,8 @@
         <entry file="file://$PROJECT_DIR$/../setninel-5p_tools/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="34">
-                <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+              <first_editor relative-caret-position="102">
+                <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
               </first_editor>
               <second_editor />
             </state>
@@ -297,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563398877369</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Readme fix">
+      <created>1563398950452</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1563398950452</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -327,7 +333,8 @@
     <MESSAGE value="initial commit.&#10;Adding Sentinel 5P request function" />
     <MESSAGE value="rename, adding requests and download functions" />
     <MESSAGE value="Adding API description to readme file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding API description to readme file" />
+    <MESSAGE value="Readme fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme fix" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../setninel-5p_tools/tests.py">
@@ -350,8 +357,8 @@
     <entry file="file://$PROJECT_DIR$/../setninel-5p_tools/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="34">
-            <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+          <first_editor relative-caret-position="102">
+            <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           </first_editor>
           <second_editor />
         </state>
