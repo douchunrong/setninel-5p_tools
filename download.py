@@ -3,9 +3,6 @@ import json
 from requests import Session
 from requests.auth import HTTPBasicAuth
 
-import time
-
-
 
 #Products constants
 OZONE_TOTAL = 'L2__O3____'
@@ -19,7 +16,7 @@ METHANE = 'L2__CH4___'
 FORMALDEHYDE = 'L2__HCHO__'
 
 
-def s5_quarry(days = '', wkt = '', product_type = '', ingestion_date_FROM = '', ingestion_date_TO = '' ):
+def s5_quarry(days = '', wkt = '', product_type = '', ingestion_date_FROM = '', ingestion_date_TO = '', full_response = False ):
     login = 's5pguest'
     password = 's5pguest'
 
@@ -38,18 +35,19 @@ def s5_quarry(days = '', wkt = '', product_type = '', ingestion_date_FROM = '', 
         #Quarring data for last X days
         if days != '':
             days = int(days) * -1
-            ingestion_date_FROM = datetime.datetime.now()
-            ingestion_date_TO = ingestion_date_FROM + datetime.timedelta(days)
-            ingestion_date_FROM = str(ingestion_date_FROM.date())
+            ingestion_date_TO = datetime.datetime.now()
+            ingestion_date_FROM = ingestion_date_TO + datetime.timedelta(days)
             ingestion_date_TO = str(ingestion_date_TO.date())
+            ingestion_date_FROM = str(ingestion_date_FROM.date())
+
             #Quaring data intersecting the WKT object
             if wkt != '':
                 #Quarring specific product type data
                 if product_type != '':
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=' + \
                              '(%20footprint:%22Intersects(' + wkt + \
-                             ')%22)%20AND%20' + '(%20ingestionDate:[' + ingestion_date_TO + \
-                             'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             ')%22)%20AND%20' + '(%20ingestionDate:[' + ingestion_date_FROM + \
+                             'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)' + \
                              '%20AND%20(%20%20(platformname:Sentinel-5%20AND%20producttype:' + product_type + \
                              '))' + '&offset=0&limit=25&sortedby=ingestiondate&order=desc'
@@ -57,21 +55,21 @@ def s5_quarry(days = '', wkt = '', product_type = '', ingestion_date_FROM = '', 
                 else:
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter='\
                              + '(%20footprint:%22Intersects(' + wkt + \
-                             ')%22)%20AND%20' + '(%20ingestionDate:[' + ingestion_date_TO + \
-                             'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             ')%22)%20AND%20' + '(%20ingestionDate:[' + ingestion_date_FROM + \
+                             'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)&offset=0&limit=25&sortedby=ingestiondate&order=desc'
             #Quarring data
             else:
                 #Quarring specific product type data
                 if product_type != '':
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=(%20ingestionDate:['\
-                             + ingestion_date_TO + 'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)' + '%20AND%20(%20%20(platformname:Sentinel-5%20AND%20producttype:'\
                              + product_type + '))' + '&offset=0&limit=25&sortedby=ingestiondate&order=desc'
                 # Quarring all data products
                 else:
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=(%20ingestionDate:['\
-                             + ingestion_date_TO + 'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)&offset=0&limit=25&sortedby=ingestiondate&order=desc'
 
         else:
@@ -80,31 +78,42 @@ def s5_quarry(days = '', wkt = '', product_type = '', ingestion_date_FROM = '', 
                 if product_type != '':
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=' + \
                              '(%20footprint:%22Intersects(' + wkt + ')%22)%20AND%20' + '(%20ingestionDate:['\
-                             + ingestion_date_TO + 'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)' + '%20AND%20(%20%20(platformname:Sentinel-5%20AND%20producttype:'\
                              + product_type + '))' + '&offset=0&limit=25&sortedby=ingestiondate&order=desc'
                 else:
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=' + \
                              '(%20footprint:%22Intersects(' + wkt + ')%22)%20AND%20' + \
-                             '(%20ingestionDate:[' + ingestion_date_TO + 'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             '(%20ingestionDate:[' + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)&offset=0&limit=25&sortedby=ingestiondate&order=desc'
             else:
                 if product_type != '':
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=(%20ingestionDate:['\
-                             + ingestion_date_TO + 'T00:00:00.000Z%20TO%20'\
-                             + ingestion_date_FROM + 'T23:59:59.999Z%20]%20)' + \
+                             + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20'\
+                             + ingestion_date_TO + 'T23:59:59.999Z%20]%20)' + \
                              '%20AND%20(%20%20(platformname:Sentinel-5%20AND%20producttype:' + product_type + \
                              '))' + '&offset=0&limit=25&sortedby=ingestiondate&order=desc'
                 else:
                     quarry = 'https://s5phub.copernicus.eu/dhus/api/stub/products?filter=(%20ingestionDate:['\
-                             + ingestion_date_TO + 'T00:00:00.000Z%20TO%20' + ingestion_date_FROM + \
+                             + ingestion_date_FROM + 'T00:00:00.000Z%20TO%20' + ingestion_date_TO + \
                              'T23:59:59.999Z%20]%20)&offset=0&limit=25&sortedby=ingestiondate&order=desc'
 
         r = s.get(quarry, headers=headers)
         resp = json.loads(r.text)
-        print('Quarry response:')
-        return resp
 
+        if full_response == False:
+            products = []
+            for p in resp['products']:
+                product = {
+                    'identifier': p['identifier'],
+                    'uuid': p['uuid'],
+                    'date': p['summary'][0][7:-14]
+                }
+                products.append(product)
+            return products
+
+        else:
+            return resp
 
 
 
