@@ -1,16 +1,19 @@
-# Setninel-5p_tools
+Setninel-5p_tools
+################
 
 Python API to request and download Sentinel 5P data products.
 
-### Request data products for last X days and get short response
+Request data products for last X days and get short response
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
 
-    from download import s5_quarry
+    from download import *
     # Returns json with products list formated as: {'identifier','uuid','date'}
     data = s5_quarry(days=10)
    
-### Download latest product by uuid
+Download latest product by uuid
++++++++++++++++++++++++++++++++
 
 .. code-block:: python
 
@@ -21,19 +24,22 @@ Python API to request and download Sentinel 5P data products.
     #Downloading product
     download_product(uuid,'C:\\Users\\Computer\\')
    
-### Request specific products for last X days and get short response
+Request specific products for last X days and get short response
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
     
     data = s5_quarry(days=10, product_type=FORMALDEHYDE)
 
-### Request specific products FROM date xx-xx-xxxx TO xx-xx-xxxx and get short response
+Request specific products FROM date xx-xx-xxxx TO xx-xx-xxxx and get short response
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
 
     data = s5_quarry(days=10, product_type=FORMALDEHYDE,ingestion_date_FROM='2019-06-17', ingestion_date_TO='2019-07-17')
 
-### Request specific products for last X days, intersecting WKT geometry and get short response
+Request specific products for last X days, intersecting WKT geometry and get short response
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
     
@@ -42,7 +48,8 @@ Python API to request and download Sentinel 5P data products.
 
 
 
-### Request data products for last X days and get full response   
+Request data products for last X days and get full response   
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: python
 
@@ -50,14 +57,15 @@ Python API to request and download Sentinel 5P data products.
     # Returns json with products formated as s5phub response
 
 
-### Products types:
+Product types:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-OZONE_TOTAL = 'L2__O3____'
-OZONE_TROPOSPHIRIC = 'L2__O3_TCL'
-OZONE_PROFILE = 'L2__O3__PR'
-OZONE_TROPOSPHIRIC_PROFILE = 'L2__O3_TPR'
-NITROGEN_DIOXIDE = 'L2__NO2___'
-SULFAR_DIOXIDE = 'L2__SO2___'
-CARBON_MONOXID = 'L2__CO____'
-METHANE = 'L2__CH4___'
-FORMALDEHYDE = 'L2__HCHO__'
+- OZONE_TOTAL
+- OZONE_TROPOSPHIRIC 
+- OZONE_PROFILE 
+- OZONE_TROPOSPHIRIC_PROFILE 
+- NITROGEN_DIOXIDE 
+- SULFAR_DIOXIDE 
+- CARBON_MONOXID 
+- METHANE 
+- FORMALDEHYDE
